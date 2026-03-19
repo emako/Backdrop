@@ -81,25 +81,10 @@ public partial class MainWindow : Window
 
         CornerHelper.SetWindowCorners(this, GetSelectedCorner());
 
-        Background = CreateWindowBackgroundBrush(backdrop, acrylicOption.Color);
-        BackdropHelper.Apply(this, backdrop, WpfColor.FromArgb(255, 0, 0, 0));
+        Background = Brushes.Transparent;
+        BackdropHelper.Apply(this, backdrop, WpfColor.FromArgb(acrylicOption.Color.A, acrylicOption.Color.R, acrylicOption.Color.G, acrylicOption.Color.B));
         UpdateSurfaceTheme();
         UpdateStatus();
-    }
-
-    private Brush CreateWindowBackgroundBrush(BackdropType backdrop, MicaColor acrylicColor)
-    {
-        if (backdrop == BackdropType.None)
-        {
-            return new SolidColorBrush(WpfColor.FromRgb(242, 244, 247));
-        }
-
-        if (backdrop.GetActualBackdropType() == BackdropType.Acrylic10)
-        {
-            return new SolidColorBrush(WpfColor.FromArgb(28, acrylicColor.R, acrylicColor.G, acrylicColor.B));
-        }
-
-        return Brushes.Transparent;
     }
 
     private void UpdateSurfaceTheme()
