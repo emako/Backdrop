@@ -1,0 +1,140 @@
+<Window x:Class="MicaDrop.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MicaDrop WPF Demo"
+        Width="980"
+        Height="640"
+        MinWidth="900"
+        MinHeight="560"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        Background="Transparent">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#14000000" Offset="0" />
+                <GradientStop Color="#06000000" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border x:Name="ControlsPanel"
+                Margin="24"
+                Padding="20"
+                CornerRadius="18"
+                BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock FontSize="28"
+                           FontWeight="SemiBold"
+                           Text="MicaDrop" />
+
+                <TextBlock Grid.Row="1"
+                           Margin="0,8,0,0"
+                           Opacity="0.78"
+                           TextWrapping="Wrap"
+                           Text="用下拉框切换背景、圆角和 Acrylic 颜色，直接观察当前系统下的实际效果。" />
+
+                <StackPanel Grid.Row="2" Margin="0,24,0,0">
+                    <TextBlock Margin="0,0,0,8" FontWeight="SemiBold" Text="Backdrop" />
+                    <ComboBox x:Name="BackdropComboBox"
+                              SelectionChanged="SelectionChanged_Reapply"
+                              MinHeight="34" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Margin="0,18,0,0">
+                    <TextBlock Margin="0,0,0,8" FontWeight="SemiBold" Text="Corner" />
+                    <ComboBox x:Name="CornerComboBox"
+                              SelectionChanged="SelectionChanged_Reapply"
+                              MinHeight="34" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" Margin="0,18,0,0">
+                    <TextBlock Margin="0,0,0,8" FontWeight="SemiBold" Text="Acrylic Tint" />
+                    <ComboBox x:Name="AcrylicColorComboBox"
+                              SelectionChanged="SelectionChanged_Reapply"
+                              MinHeight="34"
+                              DisplayMemberPath="Name" />
+                </StackPanel>
+
+                <CheckBox x:Name="DarkModeCheckBox"
+                          Grid.Row="5"
+                          Margin="0,18,0,0"
+                          Content="应用沉浸式深色标题栏"
+                          Checked="DarkModeCheckBox_Changed"
+                          Unchecked="DarkModeCheckBox_Changed" />
+
+                <Border Grid.Row="6"
+                        Margin="0,22,0,0"
+                        Padding="14"
+                        CornerRadius="12"
+                        Background="#1A000000">
+                    <TextBlock x:Name="StatusTextBlock"
+                               FontFamily="Consolas"
+                               FontSize="13"
+                               TextWrapping="Wrap" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1" Margin="0,24,24,24">
+            <Border x:Name="PreviewCard"
+                    MaxWidth="560"
+                    Padding="28"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    CornerRadius="24"
+                    BorderThickness="1">
+                <StackPanel>
+                    <TextBlock FontSize="32"
+                               FontWeight="SemiBold"
+                               Text="Effect Preview" />
+                    <TextBlock Margin="0,12,0,0"
+                               Opacity="0.8"
+                               TextWrapping="Wrap"
+                               Text="当前窗口会直接套用 MicaDrop 效果。左侧组合框用于切换效果，右侧区域仅作为前景内容，方便观察背景与边框变化。" />
+
+                    <UniformGrid Margin="0,28,0,0" Columns="2" Rows="2">
+                        <Border Margin="0,0,12,12" Padding="16" CornerRadius="16" Background="#22FFFFFF">
+                            <StackPanel>
+                                <TextBlock FontWeight="SemiBold" Text="OS" />
+                                <TextBlock x:Name="OsVersionTextBlock" Margin="0,6,0,0" />
+                            </StackPanel>
+                        </Border>
+                        <Border Margin="0,0,0,12" Padding="16" CornerRadius="16" Background="#22FFFFFF">
+                            <StackPanel>
+                                <TextBlock FontWeight="SemiBold" Text="Supported" />
+                                <TextBlock x:Name="SupportedTextBlock" Margin="0,6,0,0" />
+                            </StackPanel>
+                        </Border>
+                        <Border Margin="0,0,12,0" Padding="16" CornerRadius="16" Background="#22FFFFFF">
+                            <StackPanel>
+                                <TextBlock FontWeight="SemiBold" Text="Selected" />
+                                <TextBlock x:Name="SelectedTextBlock" Margin="0,6,0,0" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Border>
+                        <Border Margin="0,0,0,0" Padding="16" CornerRadius="16" Background="#22FFFFFF">
+                            <StackPanel>
+                                <TextBlock FontWeight="SemiBold" Text="Acrylic Color" />
+                                <TextBlock x:Name="AcrylicColorTextBlock" Margin="0,6,0,0" />
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
