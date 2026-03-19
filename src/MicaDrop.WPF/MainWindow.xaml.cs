@@ -1,15 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Interop;
 using System.Windows.Media;
-using BackdropHelper = global::MicaDrop.BackdropHelper;
-using BackdropType = global::MicaDrop.BackdropType;
-using CornerHelper = global::MicaDrop.CornerHelper;
 using MicaColor = global::MicaDrop.Color;
-using OSVersionHelper = global::MicaDrop.OSVersionHelper;
 using WpfColor = System.Windows.Media.Color;
-using WindowCornerStyle = global::MicaDrop.WindowCornerStyle;
 
 namespace MicaDrop.WPF;
 
@@ -24,8 +18,6 @@ public partial class MainWindow : Window
         new AcrylicColorOption("Amber", MicaColor.FromArgb(255, 171, 117, 48))
     ];
 
-    private IntPtr _windowHandle;
-
     public MainWindow()
     {
         InitializeComponent();
@@ -36,7 +28,6 @@ public partial class MainWindow : Window
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
-        _windowHandle = new WindowInteropHelper(this).Handle;
         ApplySelectedEffect();
     }
 
@@ -73,30 +64,25 @@ public partial class MainWindow : Window
 
     private void ApplySelectedEffect()
     {
-        if (_windowHandle == IntPtr.Zero)
-        {
-            return;
-        }
-
         var backdrop = GetSelectedBackdrop();
         var acrylicOption = GetSelectedAcrylicColor();
         var darkMode = DarkModeCheckBox.IsChecked == true;
 
-        BackdropHelper.Remove(_windowHandle);
+        BackdropHelper.Remove(this);
 
         if (darkMode)
         {
-            BackdropHelper.ApplyDarkMode(_windowHandle);
+            this.ApplyDarkMode();
         }
         else
         {
-            BackdropHelper.RemoveDarkMode(_windowHandle);
+            this.RemoveDarkMode();
         }
 
-        CornerHelper.SetWindowCorners(_windowHandle, GetSelectedCorner());
-        BackdropHelper.Apply(_windowHandle, backdrop, acrylic10Color: acrylicOption.Color);
+        CornerHelper.SetWindowCorners(this, GetSelectedCorner());
 
         Background = CreateWindowBackgroundBrush(backdrop, acrylicOption.Color);
+        BackdropHelper.Apply(this, backdrop, WpfColor.FromArgb(255, 0, 0, 0));
         UpdateSurfaceTheme();
         UpdateStatus();
     }
