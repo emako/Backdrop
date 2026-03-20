@@ -1,7 +1,6 @@
 ﻿using MicaDrop.WinApi;
 using System;
 using System.Runtime.InteropServices;
-using static MicaDrop.WinApi.DWMAPI;
 
 namespace MicaDrop;
 
