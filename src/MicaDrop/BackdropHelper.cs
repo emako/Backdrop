@@ -9,11 +9,11 @@ public enum BackdropType
 {
     None = 1,
     Mica = 2,
-    Acrylic = 3,
+    Acrylic = 3, // Automatically selects the best Acrylic effect available on the system (Acrylic11 > Acrylic10)
     Tabbed = 4,
 
-    Acrylic10,
-    Acrylic11,
+    Acrylic10, // Windows 10 style, supported on Windows 10 and 11
+    Acrylic11, // Windows 11 style, supported on Windows 11 22523+ (Insider) and 22621+ (Stable)
 }
 
 public static class BackdropHelper

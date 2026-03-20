@@ -103,7 +103,7 @@ public static class BackdropHelper
             return false;
         }
 
-        return WindowChrome.GetWindowChrome(window) == null;
+        return true;
     }
 
     public static void ApplyDarkMode(this Window window)
