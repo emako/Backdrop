@@ -1,6 +1,7 @@
 ﻿using MicaDrop.WinApi;
 using System;
 using System.Runtime.InteropServices;
+using static MicaDrop.WinApi.DWMAPI;
 
 namespace MicaDrop;
 
@@ -252,7 +253,7 @@ public static class BackdropHelper
     /// </summary>
     /// <param name="handle">Pointer to the window handle.</param>
     /// <returns><see langowrd="false"/> is problem occurs.</returns>
-    private static bool RemoveTitleBar(IntPtr handle)
+    public static bool RemoveTitleBar(IntPtr handle)
     {
         // Hide default TitleBar
         // https://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window
@@ -269,6 +270,12 @@ public static class BackdropHelper
 #endif
             return false;
         }
+    }
+
+    public static bool DwmExtendFrameIntoClientArea(nint handle, ref Margins margins)
+    {
+        _ = DWMAPI.DwmExtendFrameIntoClientArea(handle, ref margins);
+        return true;
     }
 
     private static bool TryApplyNone(IntPtr handle)

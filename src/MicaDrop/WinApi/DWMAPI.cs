@@ -202,7 +202,7 @@ internal static class DWMAPI
     /// <param name="cbAttribute">The size, in bytes, of the attribute value being set via the <c>pvAttribute</c> parameter.</param>
     /// <returns>If the function succeeds, it returns <c>S_OK</c>. Otherwise, it returns an <c>HRESULT</c> error code.</returns>
     [DllImport("dwmapi.dll")]
-    public static extern int DwmSetWindowAttribute(IntPtr hWnd, DWMWINDOWATTRIBUTE dwAttribute, ref int pvAttribute,
+    public static extern int DwmSetWindowAttribute(nint hWnd, DWMWINDOWATTRIBUTE dwAttribute, ref int pvAttribute,
         int cbAttribute);
 
     /// <summary>
@@ -211,4 +211,7 @@ internal static class DWMAPI
     /// <param name="dwParameters">A pointer to a reference value that will hold the color information.</param>
     [DllImport("dwmapi.dll", EntryPoint = "#127", PreserveSig = false, CharSet = CharSet.Unicode)]
     public static extern void DwmGetColorizationParameters(out DWMCOLORIZATIONPARAMS dwParameters);
+
+    [DllImport("dwmapi.dll")]
+    public static extern int DwmExtendFrameIntoClientArea(nint hWnd, ref Margins pMarInset);
 }
