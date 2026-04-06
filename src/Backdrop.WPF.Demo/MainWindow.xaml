@@ -2,14 +2,12 @@
     x:Class="Backdrop.WPF.Demo.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="MicaDrop WPF Demo"
     Width="980"
     Height="640"
     MinWidth="900"
     MinHeight="560"
     x:ClassModifier="internal"
-    Background="Transparent"
     WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="TextBlock">
@@ -31,7 +29,6 @@
             <ColumnDefinition Width="320" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <Border
             Margin="24"
             Padding="20"
@@ -47,19 +44,16 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-
                 <TextBlock
                     FontSize="28"
                     FontWeight="SemiBold"
                     Text="Backdrop" />
-
                 <TextBlock
                     Grid.Row="1"
                     Margin="0,8,0,0"
                     Opacity="0.78"
                     Text="Use the dropdowns to switch backdrop and corner radius and immediately observe how they look on your system."
                     TextWrapping="Wrap" />
-
                 <StackPanel Grid.Row="2" Margin="0,24,0,0">
                     <TextBlock
                         Margin="0,0,0,8"
@@ -71,7 +65,6 @@
                         ItemsSource="{Binding BackdropOptions}"
                         SelectedItem="{Binding SelectedBackdrop, Mode=TwoWay}" />
                 </StackPanel>
-
                 <StackPanel Grid.Row="3" Margin="0,18,0,0">
                     <TextBlock
                         Margin="0,0,0,8"
@@ -83,7 +76,6 @@
                         ItemsSource="{Binding CornerOptions}"
                         SelectedItem="{Binding SelectedCorner, Mode=TwoWay}" />
                 </StackPanel>
-
                 <StackPanel Grid.Row="5" Margin="0,18,0,0">
                     <TextBlock
                         Margin="0,0,0,8"
@@ -97,7 +89,6 @@
                 </StackPanel>
             </Grid>
         </Border>
-
         <Grid Grid.Column="1" Margin="0,24,24,24">
             <Border
                 MaxWidth="560"
@@ -116,7 +107,6 @@
                         Opacity="0.8"
                         Text="The current window applies the Backdrop effect directly. Use the controls on the left to switch effects; the right area shows foreground content so you can observe background and border changes."
                         TextWrapping="Wrap" />
-
                     <UniformGrid
                         Margin="0,28,0,0"
                         Columns="2"
