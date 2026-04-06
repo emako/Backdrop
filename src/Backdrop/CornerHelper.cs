@@ -46,7 +46,7 @@ public static class CornerHelper
         DWMWA_TEXT_COLOR,                     // [set] COLORREF, The color of the caption text
         DWMWA_VISIBLE_FRAME_BORDER_THICKNESS, // [get] UINT, width of the visible border around a thick frame window
 
-        DWMWA_LAST
+        DWMWA_LAST,
     }
 
     // Newly added
@@ -235,7 +235,7 @@ public static class CornerHelper
 
     public static nint[] GetWindows()
     {
-        var list = new List<nint>();
+        List<nint> list = [];
 
         if (EnumWindows(
             Proc,
