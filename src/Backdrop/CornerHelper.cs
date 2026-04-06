@@ -180,13 +180,6 @@ public static class CornerHelper
 
     #endregion Win32
 
-    //public static bool SetWindowCorners(Window window, WindowCornerStyle preference)
-    //{
-    //    var windowHandle = new WindowInteropHelper(window).EnsureHandle();
-
-    //    return SetWindowCorners(windowHandle, preference);
-    //}
-
     public static bool SetWindowCorners(nint windowHandle, WindowCornerStyle preference)
     {
         var value = (uint)preference;
@@ -197,13 +190,6 @@ public static class CornerHelper
             ref value,
             (uint)Marshal.SizeOf(value)) == S_OK;
     }
-
-    //public static bool EnableBackgroundBlur(Window window)
-    //{
-    //    var windowHandle = new WindowInteropHelper(window).EnsureHandle();
-
-    //    return EnableBackgroundBlur(windowHandle);
-    //}
 
     public static bool EnableBackgroundBlur(nint windowHandle)
     {

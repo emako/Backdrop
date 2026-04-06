@@ -40,25 +40,6 @@ public static class BackdropHelper
     }
 
     /// <summary>
-    /// Applies selected background effect to <see cref="Window"/> when is rendered.
-    /// </summary>
-    /// <param name="window">Window to apply effect.</param>
-    /// <param name="type">Background type.</param>
-    /// <param name="force">Skip the compatibility check.</param>
-    //public static bool Apply(Window window, BackdropType type, bool force = false)
-    //{
-    //    if (!force && !type.IsSupported()) { return false; }
-
-    //    var windowHandle = new WindowInteropHelper(window).EnsureHandle();
-
-    //    if (windowHandle == IntPtr.Zero) { return false; }
-
-    //    Apply(windowHandle, type, force, WindowHelper.GetAcrylic10Color(window));
-
-    //    return true;
-    //}
-
-    /// <summary>
     /// Applies selected background effect to <c>hWnd</c> by it's pointer.
     /// </summary>
     /// <param name="handle">Pointer to the window handle.</param>
@@ -87,19 +68,6 @@ public static class BackdropHelper
             _ => false
         };
     }
-
-    /// <summary>
-    /// Tries to remove background effects if they have been applied to the <see cref="Window"/>.
-    /// </summary>
-    /// <param name="window">The window from which the effect should be removed.</param>
-    //public static void Remove(Window window)
-    //{
-    //    var windowHandle = new WindowInteropHelper(window).EnsureHandle();
-
-    //    if (windowHandle == IntPtr.Zero) return;
-
-    //    Remove(windowHandle);
-    //}
 
     public static BackdropType GetActualBackdropType(this BackdropType type)
     {
@@ -141,26 +109,6 @@ public static class BackdropHelper
     }
 
     /// <summary>
-    /// Tries to inform the operating system that this window uses dark mode.
-    /// </summary>
-    /// <param name="window">Window to apply effect.</param>
-    //public static void ApplyDarkMode(this Window window)
-    //{
-    //    if (window == null)
-    //        return;
-
-    //    try
-    //    {
-    //        var windowHandle = new WindowInteropHelper(window).EnsureHandle();
-
-    //        if (windowHandle == IntPtr.Zero) return;
-
-    //        ApplyDarkMode(windowHandle);
-    //    }
-    //    catch { }
-    //}
-
-    /// <summary>
     /// Tries to inform the operating system that this <c>hWnd</c> uses dark mode.
     /// </summary>
     /// <param name="handle">Pointer to the window handle.</param>
@@ -184,26 +132,6 @@ public static class BackdropHelper
     /// <summary>
     /// Tries to clear the dark theme usage information.
     /// </summary>
-    /// <param name="window">Window to remove effect.</param>
-    //public static void RemoveDarkMode(this Window window)
-    //{
-    //    if (window == null)
-    //        return;
-
-    //    try
-    //    {
-    //        var windowHandle = new WindowInteropHelper(window).EnsureHandle();
-
-    //        if (windowHandle == IntPtr.Zero) return;
-
-    //        RemoveDarkMode(windowHandle);
-    //    }
-    //    catch { }
-    //}
-
-    /// <summary>
-    /// Tries to clear the dark theme usage information.
-    /// </summary>
     /// <param name="handle">Pointer to the window handle.</param>
     public static void RemoveDarkMode(nint handle)
     {
@@ -221,19 +149,6 @@ public static class BackdropHelper
             ref pvAttribute,
             Marshal.SizeOf(typeof(int)));
     }
-
-    /// <summary>
-    /// Tries to remove default TitleBar from <c>hWnd</c>.
-    /// </summary>
-    /// <param name="window">Window to remove effect.</param>
-    //public static void RemoveTitleBar(this Window window)
-    //{
-    //    var windowHandle = new WindowInteropHelper(window).EnsureHandle();
-
-    //    if (windowHandle == IntPtr.Zero) return;
-
-    //    RemoveTitleBar(windowHandle);
-    //}
 
     /// <summary>
     /// Tries to remove default TitleBar from <c>hWnd</c>.

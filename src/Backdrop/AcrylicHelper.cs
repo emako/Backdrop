@@ -32,31 +32,6 @@ public static class Acrylic10Helper
     }
 
     /// <summary>
-    /// Applies selected background effect to <see cref="Window"/> when is rendered.
-    /// </summary>
-    /// <param name="window">Window to apply effect.</param>
-    /// <param name="force">Skip the compatibility check.</param>
-    //public static bool Apply(Window window, bool force = false)
-    //{
-    //    //if (!force && !IsSupported()) { return false; }
-
-    //    var windowHandle = new WindowInteropHelper(window).EnsureHandle();
-
-    //    if (windowHandle == IntPtr.Zero) { return false; }
-
-    //    if (window.Background is SolidColorBrush brush)
-    //    {
-    //        Apply(windowHandle, brush.Color, force);
-    //    }
-    //    else
-    //    {
-    //        Apply(windowHandle, Colors.Transparent, force);
-    //    }
-
-    //    return true;
-    //}
-
-    /// <summary>
     /// Applies selected background effect to <c>hWnd</c> by it's pointer.
     /// </summary>
     /// <param name="handle">Pointer to the window handle.</param>
@@ -83,19 +58,6 @@ public static class Acrylic10Helper
             return false; // TryApplyAero(handle);
         }
     }
-
-    /// <summary>
-    /// Tries to remove background effects if they have been applied to the <see cref="Window"/>.
-    /// </summary>
-    /// <param name="window">The window from which the effect should be removed.</param>
-    //public static void Remove(Window window)
-    //{
-    //    var windowHandle = new WindowInteropHelper(window).EnsureHandle();
-
-    //    if (windowHandle == IntPtr.Zero) return;
-
-    //    Remove(windowHandle);
-    //}
 
     /// <summary>
     /// Tries to remove all effects if they have been applied to the <c>hWnd</c>.
