@@ -1,10 +1,7 @@
-using CommunityToolkit.Mvvm.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
+using Backdrop.WPF.Demo.ViewModels;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
-using System.ComponentModel;
-using Backdrop.WPF.Demo.ViewModels;
-using System.Linq;
 
 namespace Backdrop.WPF.Demo;
 
@@ -14,16 +11,20 @@ internal partial class MainWindow : Window
 
     public MainWindow()
     {
-        InitializeComponent();
         DataContext = ViewModel = new MainWindowViewModel();
+        InitializeComponent();
 
-        // initialize defaults
+        Loaded += MainWindow_Loaded;
+
         ViewModel.SelectedBackdrop = BackdropType.Acrylic11;
         ViewModel.SelectedCorner = WindowCornerStyle.Round;
-        // default theme to Dark
         ViewModel.SelectedTheme = ViewModel.DarkModeOptions.FirstOrDefault(x => x == DarkModeOption.Dark);
-
         ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+    }
+
+    private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+    {
+        ApplySelectedEffect();
     }
 
     protected override void OnSourceInitialized(EventArgs e)
