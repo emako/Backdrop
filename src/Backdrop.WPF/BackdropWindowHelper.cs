@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -55,7 +56,6 @@ public static class BackdropWindowHelper
         }
 
         PrepareClientArea(window, windowHandle);
-
         BackdropHelper.Remove(windowHandle);
     }
 
@@ -63,7 +63,7 @@ public static class BackdropWindowHelper
     {
         if (ShouldUseTransparentCompositionTarget(window) && HwndSource.FromHwnd(windowHandle) is HwndSource hwndSource)
         {
-            hwndSource.CompositionTarget.BackgroundColor = System.Windows.Media.Colors.Transparent;
+            hwndSource.CompositionTarget.BackgroundColor = Colors.Transparent;
         }
 
         window.Background = Brushes.Transparent;
@@ -117,10 +117,11 @@ public static class BackdropWindowHelper
                 return;
             }
 
-            global::Backdrop.BackdropHelper.ApplyDarkMode(windowHandle);
+            BackdropHelper.ApplyDarkMode(windowHandle);
         }
-        catch
+        catch (Exception ex)
         {
+            Debug.WriteLine(ex);
         }
     }
 
@@ -142,8 +143,9 @@ public static class BackdropWindowHelper
 
             BackdropHelper.RemoveDarkMode(windowHandle);
         }
-        catch
+        catch (Exception ex)
         {
+            Debug.WriteLine(ex);
         }
     }
 }

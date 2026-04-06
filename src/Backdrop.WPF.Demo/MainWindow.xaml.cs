@@ -15,6 +15,8 @@ internal partial class MainWindow : Window
         InitializeComponent();
 
         Loaded += MainWindow_Loaded;
+        Activated += MainWindow_Activated;
+        Deactivated += MainWindow_Deactivated;
 
         ViewModel.SelectedBackdrop = BackdropType.Acrylic11;
         ViewModel.SelectedCorner = WindowCornerStyle.Round;
@@ -27,9 +29,25 @@ internal partial class MainWindow : Window
         ApplySelectedEffect();
     }
 
+    private void MainWindow_Activated(object? sender, EventArgs e)
+    {
+        ApplySelectedEffect();
+    }
+
+    private void MainWindow_Deactivated(object? sender, EventArgs e)
+    {
+        //ApplySelectedEffect();
+    }
+
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
+        ApplySelectedEffect();
+    }
+
+    protected override void OnContentRendered(EventArgs e)
+    {
+        base.OnContentRendered(e);
         ApplySelectedEffect();
     }
 
@@ -41,12 +59,6 @@ internal partial class MainWindow : Window
         {
             ApplySelectedEffect();
         }
-    }
-
-    protected override void OnContentRendered(EventArgs e)
-    {
-        base.OnContentRendered(e);
-        ApplySelectedEffect();
     }
 
     private void ApplySelectedEffect()
