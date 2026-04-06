@@ -63,7 +63,7 @@ public static class Acrylic10Helper
     /// <param name="handle">Pointer to the window handle.</param>
     /// <param name="color">The Gradient Color of Acrylic.</param>
     /// <param name="force">Skip the compatibility check.</param>
-    public static bool Apply(IntPtr handle, BackdropColor color, bool force = false)
+    public static bool Apply(nint handle, BackdropColor color, bool force = false)
     {
         //if (!force && !IsSupported())
         //{
@@ -102,7 +102,7 @@ public static class Acrylic10Helper
     /// Tries to remove all effects if they have been applied to the <c>hWnd</c>.
     /// </summary>
     /// <param name="handle">Pointer to the window handle.</param>
-    public static void Remove(IntPtr handle)
+    public static void Remove(nint handle)
     {
         if (handle == IntPtr.Zero) return;
 
@@ -113,7 +113,7 @@ public static class Acrylic10Helper
 
         int accentStructSize = Marshal.SizeOf(accentPolicy);
 
-        IntPtr accentPtr = Marshal.AllocHGlobal(accentStructSize);
+        nint accentPtr = Marshal.AllocHGlobal(accentStructSize);
         Marshal.StructureToPtr(accentPolicy, accentPtr, false);
 
         WINCOMPATTRDATA data = new()
@@ -128,7 +128,7 @@ public static class Acrylic10Helper
         Marshal.FreeHGlobal(accentPtr);
     }
 
-    public static bool TryApplyAero(IntPtr handle)
+    public static bool TryApplyAero(nint handle)
     {
         ACCENT_POLICY accentPolicy = new()
         {
@@ -137,7 +137,7 @@ public static class Acrylic10Helper
 
         int accentStructSize = Marshal.SizeOf(accentPolicy);
 
-        IntPtr accentPtr = Marshal.AllocHGlobal(accentStructSize);
+        nint accentPtr = Marshal.AllocHGlobal(accentStructSize);
         Marshal.StructureToPtr(accentPolicy, accentPtr, false);
 
         WINCOMPATTRDATA data = new()
@@ -154,7 +154,7 @@ public static class Acrylic10Helper
         return true;
     }
 
-    public static bool TryApplyAcrylic(IntPtr handle, BackdropColor backcolor)
+    public static bool TryApplyAcrylic(nint handle, BackdropColor backcolor)
     {
         ACCENT_POLICY accentPolicy = new()
         {
@@ -164,7 +164,7 @@ public static class Acrylic10Helper
 
         int accentStructSize = Marshal.SizeOf(accentPolicy);
 
-        IntPtr accentPtr = Marshal.AllocHGlobal(accentStructSize);
+        nint accentPtr = Marshal.AllocHGlobal(accentStructSize);
         Marshal.StructureToPtr(accentPolicy, accentPtr, false);
 
         WINCOMPATTRDATA data = new()
@@ -261,7 +261,7 @@ public static class Acrylic10Helper
     private struct WINCOMPATTRDATA
     {
         public WINCOMPATTR Attribute;
-        public IntPtr Data;
+        public nint Data;
         public int SizeOfData;
     }
 
@@ -269,5 +269,5 @@ public static class Acrylic10Helper
     /// Sets various information regarding DWM window attributes.
     /// </summary>
     [DllImport("user32.dll", CharSet = CharSet.Auto)]
-    private static extern int SetWindowCompositionAttribute(IntPtr hWnd, ref WINCOMPATTRDATA data);
+    private static extern int SetWindowCompositionAttribute(nint hWnd, ref WINCOMPATTRDATA data);
 }

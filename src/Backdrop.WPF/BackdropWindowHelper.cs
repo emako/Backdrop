@@ -59,7 +59,7 @@ public static class BackdropWindowHelper
         BackdropHelper.Remove(windowHandle);
     }
 
-    private static void PrepareClientArea(Window window, IntPtr windowHandle)
+    private static void PrepareClientArea(Window window, nint windowHandle)
     {
         if (ShouldUseTransparentCompositionTarget(window) && HwndSource.FromHwnd(windowHandle) is HwndSource hwndSource)
         {

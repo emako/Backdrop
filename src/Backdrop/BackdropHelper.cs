@@ -76,7 +76,7 @@ public static class BackdropHelper
     /// <param name="handle">Pointer to the window handle.</param>
     /// <param name="type">Background type.</param>
     /// <param name="force">Skip the compatibility check.</param>
-    public static bool Apply(IntPtr handle, BackdropType type, bool force = false, BackdropColor? acrylic10Color = null)
+    public static bool Apply(nint handle, BackdropType type, bool force = false, BackdropColor? acrylic10Color = null)
     {
         if (!force && !type.IsSupported()) { return false; }
 
@@ -127,7 +127,7 @@ public static class BackdropHelper
     /// Tries to remove all effects if they have been applied to the <c>hWnd</c>.
     /// </summary>
     /// <param name="handle">Pointer to the window handle.</param>
-    public static void Remove(IntPtr handle)
+    public static void Remove(nint handle)
     {
         if (handle == IntPtr.Zero) return;
 
@@ -176,7 +176,7 @@ public static class BackdropHelper
     /// Tries to inform the operating system that this <c>hWnd</c> uses dark mode.
     /// </summary>
     /// <param name="handle">Pointer to the window handle.</param>
-    public static void ApplyDarkMode(IntPtr handle)
+    public static void ApplyDarkMode(nint handle)
     {
         if (handle == IntPtr.Zero) return;
 
@@ -217,7 +217,7 @@ public static class BackdropHelper
     /// Tries to clear the dark theme usage information.
     /// </summary>
     /// <param name="handle">Pointer to the window handle.</param>
-    public static void RemoveDarkMode(IntPtr handle)
+    public static void RemoveDarkMode(nint handle)
     {
         if (handle == IntPtr.Zero) { return; }
 
@@ -252,7 +252,7 @@ public static class BackdropHelper
     /// </summary>
     /// <param name="handle">Pointer to the window handle.</param>
     /// <returns><see langowrd="false"/> is problem occurs.</returns>
-    public static bool RemoveTitleBar(IntPtr handle)
+    public static bool RemoveTitleBar(nint handle)
     {
         // Hide default TitleBar
         // https://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window
@@ -277,7 +277,7 @@ public static class BackdropHelper
         return true;
     }
 
-    private static bool TryApplyNone(IntPtr handle)
+    private static bool TryApplyNone(nint handle)
     {
         if (OSVersionHelper.OSVersion >= new Version(10, 0, 22523))
         {
@@ -296,7 +296,7 @@ public static class BackdropHelper
         }
     }
 
-    private static bool TryApplyTabbed(IntPtr handle)
+    private static bool TryApplyTabbed(nint handle)
     {
         int backdropPvAttribute = (int)DWMAPI.DWMSBT.DWMSBT_TABBEDWINDOW;
 
@@ -307,7 +307,7 @@ public static class BackdropHelper
         return true;
     }
 
-    private static bool TryApplyMica(IntPtr handle)
+    private static bool TryApplyMica(nint handle)
     {
         int backdropPvAttribute;
 
@@ -333,7 +333,7 @@ public static class BackdropHelper
         return true;
     }
 
-    private static bool TryApplyAcrylic(IntPtr handle)
+    private static bool TryApplyAcrylic(nint handle)
     {
         int backdropPvAttribute = (int)DWMAPI.DWMSBT.DWMSBT_TRANSIENTWINDOW;
 
