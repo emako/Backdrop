@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.ComponentModel;
 using Backdrop.WPF.Demo.ViewModels;
+using System.Linq;
 
 namespace Backdrop.WPF.Demo;
 
@@ -19,7 +20,8 @@ internal partial class MainWindow : Window
         // initialize defaults
         ViewModel.SelectedBackdrop = BackdropType.Acrylic11;
         ViewModel.SelectedCorner = WindowCornerStyle.Round;
-        ViewModel.IsDarkMode = true;
+        // default theme to Dark
+        ViewModel.SelectedTheme = ViewModel.DarkModeOptions.FirstOrDefault(x => x == DarkModeOption.Dark);
 
         ViewModel.PropertyChanged += ViewModel_PropertyChanged;
     }
@@ -34,7 +36,7 @@ internal partial class MainWindow : Window
     {
         if (e.PropertyName is nameof(MainWindowViewModel.SelectedBackdrop)
             or nameof(MainWindowViewModel.SelectedCorner)
-            or nameof(MainWindowViewModel.IsDarkMode))
+            or nameof(MainWindowViewModel.SelectedTheme))
         {
             ApplySelectedEffect();
         }
@@ -46,25 +48,10 @@ internal partial class MainWindow : Window
         ApplySelectedEffect();
     }
 
-    private void Window_Loaded(object sender, RoutedEventArgs e)
-    {
-        UpdateStatus();
-    }
-
-    private void SelectionChanged_Reapply(object sender, EventArgs e)
-    {
-        ApplySelectedEffect();
-    }
-
-    private void DarkModeCheckBox_Changed(object sender, RoutedEventArgs e)
-    {
-        ApplySelectedEffect();
-    }
-
     private void ApplySelectedEffect()
     {
-        var backdrop = ViewModel?.SelectedBackdrop ?? BackdropType.None;
-        var darkMode = ViewModel?.IsDarkMode == true;
+        var backdrop = GetSelectedBackdrop();
+        var darkMode = ViewModel?.SelectedTheme == DarkModeOption.Dark;
 
         BackdropWindowHelper.Remove(this);
 
@@ -94,7 +81,7 @@ internal partial class MainWindow : Window
 
         ViewModel.OsVersion = OSVersionHelper.OSVersion.ToString();
         ViewModel.Supported = supported ? "Yes" : "No";
-        ViewModel.Selected = $"Backdrop: {backdrop}\nActual: {actualBackdrop}\nCorner: {GetSelectedCorner()}\nDark Mode: {ViewModel.IsDarkMode}";
+        ViewModel.Selected = $"Backdrop: {backdrop}\nActual: {actualBackdrop}\nCorner: {GetSelectedCorner()}\nTheme: {ViewModel.SelectedTheme}";
 
         ViewModel.StatusText =
             $"OS Version      : {OSVersionHelper.OSVersion}\n" +
@@ -103,7 +90,7 @@ internal partial class MainWindow : Window
             $"Supported       : {supported}\n" +
             $"Manual Bg Needed: {backdrop.IsManualBackgroundNeeded()}\n" +
             $"Corner          : {GetSelectedCorner()}\n" +
-            $"Dark Mode       : {ViewModel.IsDarkMode}";
+            $"Theme           : {ViewModel.SelectedTheme}";
     }
 
     private BackdropType GetSelectedBackdrop()

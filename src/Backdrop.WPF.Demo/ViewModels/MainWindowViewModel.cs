@@ -10,6 +10,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         BackdropOptions = new List<BackdropType>((BackdropType[])Enum.GetValues(typeof(BackdropType)));
         CornerOptions = new List<WindowCornerStyle>((WindowCornerStyle[])Enum.GetValues(typeof(WindowCornerStyle)));
+        DarkModeOptions = new List<DarkModeOption>((DarkModeOption[])Enum.GetValues(typeof(DarkModeOption)));
     }
 
     [ObservableProperty]
@@ -18,8 +19,12 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     private WindowCornerStyle selectedCorner;
 
+    // removed IsDarkMode; use SelectedTheme instead
+
     [ObservableProperty]
-    private bool isDarkMode;
+    private DarkModeOption selectedTheme;
+
+    public List<DarkModeOption> DarkModeOptions { get; }
 
     [ObservableProperty]
     private string osVersion = string.Empty;

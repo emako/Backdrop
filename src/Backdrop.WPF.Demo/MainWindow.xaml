@@ -10,7 +10,6 @@
     MinHeight="560"
     x:ClassModifier="internal"
     Background="Transparent"
-    Loaded="Window_Loaded"
     WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="TextBlock">
@@ -85,24 +84,17 @@
                         SelectedItem="{Binding SelectedCorner, Mode=TwoWay}" />
                 </StackPanel>
 
-                <CheckBox
-                    x:Name="DarkModeCheckBox"
-                    Grid.Row="5"
-                    Margin="0,18,0,0"
-                    Content="应用沉浸式深色标题栏"
-                    IsChecked="{Binding IsDarkMode, Mode=TwoWay}" />
-
-                <Border
-                    Grid.Row="6"
-                    Margin="0,22,0,0"
-                    Padding="14"
-                    Background="#1A000000"
-                    CornerRadius="12">
+                <StackPanel Grid.Row="5" Margin="0,18,0,0">
                     <TextBlock
-                        FontFamily="Consolas"
-                        FontSize="13"
-                        TextWrapping="Wrap" />
-                </Border>
+                        Margin="0,0,0,8"
+                        FontWeight="SemiBold"
+                        Text="Theme" />
+                    <ComboBox
+                        x:Name="ThemeComboBox"
+                        MinHeight="34"
+                        ItemsSource="{Binding DarkModeOptions}"
+                        SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
+                </StackPanel>
             </Grid>
         </Border>
 
