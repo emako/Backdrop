@@ -57,7 +57,7 @@
                     Grid.Row="1"
                     Margin="0,8,0,0"
                     Opacity="0.78"
-                    Text="用下拉框切换背景、圆角，直接观察当前系统下的实际效果。"
+                    Text="Use the dropdowns to switch backdrop and corner radius and immediately observe how they look on your system."
                     TextWrapping="Wrap" />
 
                 <StackPanel Grid.Row="2" Margin="0,24,0,0">
@@ -114,7 +114,7 @@
                     <TextBlock
                         Margin="0,12,0,0"
                         Opacity="0.8"
-                        Text="当前窗口会直接套用 Backdrop 效果。左侧组合框用于切换效果，右侧区域仅作为前景内容，方便观察背景与边框变化。"
+                        Text="The current window applies the Backdrop effect directly. Use the controls on the left to switch effects; the right area shows foreground content so you can observe background and border changes."
                         TextWrapping="Wrap" />
 
                     <UniformGrid
