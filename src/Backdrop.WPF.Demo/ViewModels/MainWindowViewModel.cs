@@ -1,44 +1,35 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Backdrop.WPF.Demo.ViewModels;
 
-public partial class MainWindowViewModel : ObservableObject
+[method: SuppressMessage("Usage", "CA2263:Prefer generic overload when type is known")]
+public partial class MainWindowViewModel() : ObservableObject
 {
-    public MainWindowViewModel()
-    {
-        BackdropOptions = new List<BackdropType>((BackdropType[])Enum.GetValues(typeof(BackdropType)));
-        CornerOptions = new List<WindowCornerStyle>((WindowCornerStyle[])Enum.GetValues(typeof(WindowCornerStyle)));
-        DarkModeOptions = new List<DarkModeOption>((DarkModeOption[])Enum.GetValues(typeof(DarkModeOption)));
-    }
+    [ObservableProperty]
+    public partial BackdropType SelectedBackdrop { get; set; }
 
     [ObservableProperty]
-    private BackdropType selectedBackdrop;
+    public partial WindowCornerStyle SelectedCorner { get; set; }
 
     [ObservableProperty]
-    private WindowCornerStyle selectedCorner;
+    public partial DarkModeOption SelectedTheme { get; set; }
 
-    // removed IsDarkMode; use SelectedTheme instead
-
-    [ObservableProperty]
-    private DarkModeOption selectedTheme;
-
-    public List<DarkModeOption> DarkModeOptions { get; }
+    public List<DarkModeOption> DarkModeOptions { get; } = [.. (DarkModeOption[])Enum.GetValues(typeof(DarkModeOption))];
 
     [ObservableProperty]
-    private string osVersion = string.Empty;
+    public partial string OsVersion { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string supported = string.Empty;
+    public partial string Supported { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string selected = string.Empty;
+    public partial string Selected { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string statusText = string.Empty;
+    public partial string StatusText { get; set; } = string.Empty;
 
-    public List<BackdropType> BackdropOptions { get; }
+    public List<BackdropType> BackdropOptions { get; } = [.. (BackdropType[])Enum.GetValues(typeof(BackdropType))];
 
-    public List<WindowCornerStyle> CornerOptions { get; }
+    public List<WindowCornerStyle> CornerOptions { get; } = [.. (WindowCornerStyle[])Enum.GetValues(typeof(WindowCornerStyle))];
 }
