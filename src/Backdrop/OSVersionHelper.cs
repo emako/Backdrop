@@ -1,8 +1,7 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Backdrop;
+namespace System.Backdrop;
 
 public static class OSVersionHelper
 {

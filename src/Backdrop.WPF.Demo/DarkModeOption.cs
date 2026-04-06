@@ -1,4 +1,4 @@
-namespace Backdrop.WPF.Demo.ViewModels;
+namespace System.Backdrop.WPF.Demo;
 
 public enum DarkModeOption
 {

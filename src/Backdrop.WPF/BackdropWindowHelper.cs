@@ -1,10 +1,9 @@
-using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace Backdrop.WPF;
+namespace System.Backdrop.WPF;
 
 public static class BackdropWindowHelper
 {
@@ -88,7 +87,7 @@ public static class BackdropWindowHelper
             return false;
         }
 
-        return global::Backdrop.BackdropHelper.DwmExtendFrameIntoClientArea(windowHandle, ref margins);
+        return BackdropHelper.DwmExtendFrameIntoClientArea(windowHandle, ref margins);
     }
 
     private static bool ShouldUseTransparentCompositionTarget(Window window)

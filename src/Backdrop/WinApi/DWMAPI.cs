@@ -1,7 +1,6 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
-namespace Backdrop.WinApi;
+namespace System.Backdrop.WinApi;
 
 /// <summary>
 /// Used by Desktop Window Manager (DWM)

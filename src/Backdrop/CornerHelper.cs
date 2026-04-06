@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Backdrop;
+namespace System.Backdrop;
 
 public static class CornerHelper
 {

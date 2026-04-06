@@ -1,8 +1,7 @@
-﻿using Backdrop.WinApi;
-using System;
+﻿using System.Backdrop.WinApi;
 using System.Runtime.InteropServices;
 
-namespace Backdrop;
+namespace System.Backdrop;
 
 public enum BackdropType
 {

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
-namespace Backdrop;
+namespace System.Backdrop;
 
 public static class Acrylic10Helper
 {

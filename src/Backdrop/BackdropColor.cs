@@ -1,6 +1,4 @@
-using System;
-
-namespace Backdrop;
+namespace System.Backdrop;
 
 /// <summary>
 /// Represents an ARGB color.

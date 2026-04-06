@@ -4,7 +4,7 @@ using System.NativeTray;
 using System.Windows;
 using System.Windows.Resources;
 
-namespace Backdrop.WPF.Demo;
+namespace System.Backdrop.WPF.Demo;
 
 internal partial class TrayIconManager
 {

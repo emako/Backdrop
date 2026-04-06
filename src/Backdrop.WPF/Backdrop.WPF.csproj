@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <AssemblyName>Backdrop.WPF</AssemblyName>
-    <RootNamespace>Backdrop.WPF</RootNamespace>
+    <RootNamespace>System.Backdrop.WPF</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

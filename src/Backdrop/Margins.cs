@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Backdrop;
+namespace System.Backdrop;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct Margins

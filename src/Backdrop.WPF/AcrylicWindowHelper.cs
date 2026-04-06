@@ -1,8 +1,7 @@
-using System;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace Backdrop.WPF;
+namespace System.Backdrop.WPF;
 
 public static class AcrylicWindowHelper
 {

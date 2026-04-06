@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Backdrop.WPF;
+namespace System.Backdrop.WPF;
 
 internal static class ColorHelper
 {

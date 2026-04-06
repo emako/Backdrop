@@ -1,9 +1,8 @@
-using Backdrop.WPF.Demo.ViewModels;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Backdrop.WPF.Demo;
+namespace System.Backdrop.WPF.Demo;
 
 internal partial class MainWindow : Window
 {

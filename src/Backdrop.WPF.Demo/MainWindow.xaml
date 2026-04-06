@@ -1,5 +1,5 @@
 <Window
-    x:Class="Backdrop.WPF.Demo.MainWindow"
+    x:Class="System.Backdrop.WPF.Demo.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="MicaDrop WPF Demo"

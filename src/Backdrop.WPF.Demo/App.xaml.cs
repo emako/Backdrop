@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace Backdrop.WPF.Demo;
+namespace System.Backdrop.WPF.Demo;
 
 public partial class App : Application
 {

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Backdrop.WinApi;
+namespace System.Backdrop.WinApi;
 
 /// <summary>
 /// This header is used by multiple technologies.

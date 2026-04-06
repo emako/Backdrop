@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Backdrop.WPF.Demo.ViewModels;
+namespace System.Backdrop.WPF.Demo;
 
 [method: SuppressMessage("Usage", "CA2263:Prefer generic overload when type is known")]
 public partial class MainWindowViewModel() : ObservableObject
