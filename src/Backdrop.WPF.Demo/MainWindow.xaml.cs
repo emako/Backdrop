@@ -9,12 +9,12 @@ namespace Backdrop.WPF.Demo;
 
 internal partial class MainWindow : Window
 {
+    private MainWindowViewModel ViewModel { get; }
+
     public MainWindow()
     {
         InitializeComponent();
-        // Use MVVM view model for ComboBox ItemsSource / SelectedItem and DarkMode
-        ViewModel = new MainWindowViewModel();
-        DataContext = ViewModel;
+        DataContext = ViewModel = new MainWindowViewModel();
 
         // initialize defaults
         ViewModel.SelectedBackdrop = BackdropType.Acrylic11;
@@ -30,13 +30,6 @@ internal partial class MainWindow : Window
         ApplySelectedEffect();
     }
 
-    [SuppressMessage("Usage", "CA2263:Prefer generic overload when type is known")]
-    private void InitializeOptions()
-    {
-        // Initialization is moved to the view model. This method is kept for
-        // compatibility but no longer manipulates UI controls directly.
-    }
-
     private void ViewModel_PropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName is nameof(MainWindowViewModel.SelectedBackdrop)
@@ -46,8 +39,6 @@ internal partial class MainWindow : Window
             ApplySelectedEffect();
         }
     }
-
-    private MainWindowViewModel ViewModel { get; set; }
 
     protected override void OnContentRendered(EventArgs e)
     {
