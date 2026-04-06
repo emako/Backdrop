@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace MicaDrop;
+namespace Backdrop;
 
 public static class CornerHelper
 {
@@ -134,9 +134,9 @@ public static class CornerHelper
         public int x;
         public int y;
 
-        public static implicit operator Point(POINT point) => new Point(point.x, point.y);
+        public static implicit operator Point(POINT point) => new(point.x, point.y);
 
-        public static implicit operator POINT(Point point) => new POINT { x = (int)point.X, y = (int)point.Y };
+        public static implicit operator POINT(Point point) => new() { x = point.X, y = point.Y };
     }
 
     [DllImport("User32.dll")]
@@ -330,5 +330,5 @@ public enum WindowCornerStyle : uint
     /// Round the corners if appropriate, with a small radius.
     /// Equivalent to DWMWCP_ROUNDSMALL
     /// </summary>
-    RoundSmall = 3
+    RoundSmall = 3,
 }

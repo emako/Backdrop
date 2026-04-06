@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace MicaDrop.WPF;
+namespace Backdrop.WPF.Demo;
 
 public partial class App : Application
 {

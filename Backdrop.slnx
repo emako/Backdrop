@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/Backdrop/Backdrop.csproj" />
+  <Project Path="src/Backdrop.WPF/Backdrop.WPF.csproj" />
+  <Project Path="src/Backdrop.WPF.Demo/Backdrop.WPF.Demo.csproj" />
+</Solution>

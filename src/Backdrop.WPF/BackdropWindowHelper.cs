@@ -1,28 +1,23 @@
 using System;
-using System.Drawing.Printing;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Shell;
-using WpfColor = System.Windows.Media.Color;
-using WpfColors = System.Windows.Media.Colors;
 
-namespace MicaDrop.WPF;
+namespace Backdrop.WPF;
 
-public static class BackdropHelper
+public static class BackdropWindowHelper
 {
-    public static bool Apply(Window window, global::MicaDrop.BackdropType type, bool force = false)
+    public static bool Apply(Window window, BackdropType type, bool force = false)
     {
         if (window == null)
         {
             return false;
         }
 
-        return Apply(window, type, window.Background is SolidColorBrush brush ? brush.Color : (WpfColor?)null, force);
+        return Apply(window, type, window.Background is SolidColorBrush brush ? brush.Color : null, force);
     }
 
-    public static bool Apply(Window window, global::MicaDrop.BackdropType type, WpfColor? acrylic10Color, bool force = false)
+    public static bool Apply(Window window, BackdropType type, Color? acrylic10Color, bool force = false)
     {
         if (window == null)
         {
@@ -38,7 +33,7 @@ public static class BackdropHelper
 
         PrepareClientArea(window, windowHandle);
 
-        return global::MicaDrop.BackdropHelper.Apply(
+        return BackdropHelper.Apply(
             windowHandle,
             type,
             force,
@@ -61,14 +56,14 @@ public static class BackdropHelper
 
         PrepareClientArea(window, windowHandle);
 
-        global::MicaDrop.BackdropHelper.Remove(windowHandle);
+        BackdropHelper.Remove(windowHandle);
     }
 
     private static void PrepareClientArea(Window window, IntPtr windowHandle)
     {
         if (ShouldUseTransparentCompositionTarget(window) && HwndSource.FromHwnd(windowHandle) is HwndSource hwndSource)
         {
-            hwndSource.CompositionTarget.BackgroundColor = WpfColors.Transparent;
+            hwndSource.CompositionTarget.BackgroundColor = System.Windows.Media.Colors.Transparent;
         }
 
         window.Background = Brushes.Transparent;
@@ -93,7 +88,7 @@ public static class BackdropHelper
             return false;
         }
 
-        return global::MicaDrop.BackdropHelper.DwmExtendFrameIntoClientArea(windowHandle, ref margins);
+        return global::Backdrop.BackdropHelper.DwmExtendFrameIntoClientArea(windowHandle, ref margins);
     }
 
     private static bool ShouldUseTransparentCompositionTarget(Window window)
@@ -122,7 +117,7 @@ public static class BackdropHelper
                 return;
             }
 
-            global::MicaDrop.BackdropHelper.ApplyDarkMode(windowHandle);
+            global::Backdrop.BackdropHelper.ApplyDarkMode(windowHandle);
         }
         catch
         {
@@ -145,7 +140,7 @@ public static class BackdropHelper
                 return;
             }
 
-            global::MicaDrop.BackdropHelper.RemoveDarkMode(windowHandle);
+            BackdropHelper.RemoveDarkMode(windowHandle);
         }
         catch
         {

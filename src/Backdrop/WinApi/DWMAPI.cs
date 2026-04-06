@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 
-namespace MicaDrop.WinApi;
+namespace Backdrop.WinApi;
 
 /// <summary>
 /// Used by Desktop Window Manager (DWM)

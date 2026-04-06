@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace MicaDrop;
+namespace Backdrop;
 
 public static class Acrylic10Helper
 {
@@ -63,7 +63,7 @@ public static class Acrylic10Helper
     /// <param name="handle">Pointer to the window handle.</param>
     /// <param name="color">The Gradient Color of Acrylic.</param>
     /// <param name="force">Skip the compatibility check.</param>
-    public static bool Apply(IntPtr handle, Color color, bool force = false)
+    public static bool Apply(IntPtr handle, BackdropColor color, bool force = false)
     {
         //if (!force && !IsSupported())
         //{
@@ -106,7 +106,7 @@ public static class Acrylic10Helper
     {
         if (handle == IntPtr.Zero) return;
 
-        ACCENT_POLICY accentPolicy = new ACCENT_POLICY
+        ACCENT_POLICY accentPolicy = new()
         {
             AccentState = ACCENT_STATE.ACCENT_DISABLED,
         };
@@ -116,11 +116,11 @@ public static class Acrylic10Helper
         IntPtr accentPtr = Marshal.AllocHGlobal(accentStructSize);
         Marshal.StructureToPtr(accentPolicy, accentPtr, false);
 
-        WINCOMPATTRDATA data = new WINCOMPATTRDATA
+        WINCOMPATTRDATA data = new()
         {
             Attribute = WINCOMPATTR.WCA_ACCENT_POLICY,
             SizeOfData = accentStructSize,
-            Data = accentPtr
+            Data = accentPtr,
         };
 
         SetWindowCompositionAttribute(handle, ref data);
@@ -130,7 +130,7 @@ public static class Acrylic10Helper
 
     public static bool TryApplyAero(IntPtr handle)
     {
-        ACCENT_POLICY accentPolicy = new ACCENT_POLICY
+        ACCENT_POLICY accentPolicy = new()
         {
             AccentState = ACCENT_STATE.ACCENT_ENABLE_BLURBEHIND,
         };
@@ -140,11 +140,11 @@ public static class Acrylic10Helper
         IntPtr accentPtr = Marshal.AllocHGlobal(accentStructSize);
         Marshal.StructureToPtr(accentPolicy, accentPtr, false);
 
-        WINCOMPATTRDATA data = new WINCOMPATTRDATA
+        WINCOMPATTRDATA data = new()
         {
             Attribute = WINCOMPATTR.WCA_ACCENT_POLICY,
             SizeOfData = accentStructSize,
-            Data = accentPtr
+            Data = accentPtr,
         };
 
         SetWindowCompositionAttribute(handle, ref data);
@@ -154,9 +154,9 @@ public static class Acrylic10Helper
         return true;
     }
 
-    public static bool TryApplyAcrylic(IntPtr handle, Color backcolor)
+    public static bool TryApplyAcrylic(IntPtr handle, BackdropColor backcolor)
     {
-        ACCENT_POLICY accentPolicy = new ACCENT_POLICY
+        ACCENT_POLICY accentPolicy = new()
         {
             AccentState = ACCENT_STATE.ACCENT_ENABLE_ACRYLICBLURBEHIND,
             GradientColor = (uint)backcolor.ColorToDouble(0.8)
@@ -167,7 +167,7 @@ public static class Acrylic10Helper
         IntPtr accentPtr = Marshal.AllocHGlobal(accentStructSize);
         Marshal.StructureToPtr(accentPolicy, accentPtr, false);
 
-        WINCOMPATTRDATA data = new WINCOMPATTRDATA
+        WINCOMPATTRDATA data = new()
         {
             Attribute = WINCOMPATTR.WCA_ACCENT_POLICY,
             SizeOfData = accentStructSize,
@@ -181,7 +181,7 @@ public static class Acrylic10Helper
         return true;
     }
 
-    private static int ColorToDouble(this Color value, double scale = 1)
+    private static int ColorToDouble(this BackdropColor value, double scale = 1)
     {
         return
         // Red

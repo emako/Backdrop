@@ -1,4 +1,0 @@
-<Solution>
-  <Project Path="src/MicaDrop/MicaDrop.csproj" />
-  <Project Path="src/MicaDrop.WPF/MicaDrop.WPF.csproj" />
-</Solution>

@@ -2,11 +2,11 @@ using System;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace MicaDrop.WPF;
+namespace Backdrop.WPF;
 
-public static class CornerHelper
+public static class AcrylicWindowHelper
 {
-    public static bool SetWindowCorners(Window window, global::MicaDrop.WindowCornerStyle preference)
+    public static bool Apply(Window window, bool force = false)
     {
         if (window == null)
         {
@@ -20,23 +20,23 @@ public static class CornerHelper
             return false;
         }
 
-        return global::MicaDrop.CornerHelper.SetWindowCorners(windowHandle, preference);
+        return Acrylic10Helper.Apply(windowHandle, window.GetAcrylicColor(), force);
     }
 
-    public static bool EnableBackgroundBlur(Window window)
+    public static void Remove(Window window)
     {
         if (window == null)
         {
-            return false;
+            return;
         }
 
         var windowHandle = new WindowInteropHelper(window).EnsureHandle();
 
         if (windowHandle == IntPtr.Zero)
         {
-            return false;
+            return;
         }
 
-        return global::MicaDrop.CornerHelper.EnableBackgroundBlur(windowHandle);
+        Acrylic10Helper.Remove(windowHandle);
     }
 }

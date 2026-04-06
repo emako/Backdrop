@@ -1,8 +1,8 @@
-﻿using MicaDrop.WinApi;
+﻿using Backdrop.WinApi;
 using System;
 using System.Runtime.InteropServices;
 
-namespace MicaDrop;
+namespace Backdrop;
 
 public enum BackdropType
 {
@@ -76,7 +76,7 @@ public static class BackdropHelper
     /// <param name="handle">Pointer to the window handle.</param>
     /// <param name="type">Background type.</param>
     /// <param name="force">Skip the compatibility check.</param>
-    public static bool Apply(IntPtr handle, BackdropType type, bool force = false, Color? acrylic10Color = null)
+    public static bool Apply(IntPtr handle, BackdropType type, bool force = false, BackdropColor? acrylic10Color = null)
     {
         if (!force && !type.IsSupported()) { return false; }
 
@@ -93,7 +93,7 @@ public static class BackdropHelper
             BackdropType.None => TryApplyNone(handle),
             BackdropType.Mica => TryApplyMica(handle),
             BackdropType.Acrylic11 => TryApplyAcrylic(handle),
-            BackdropType.Acrylic10 => Acrylic10Helper.TryApplyAcrylic(handle, acrylic10Color ?? Colors.Transparent),
+            BackdropType.Acrylic10 => Acrylic10Helper.TryApplyAcrylic(handle, acrylic10Color ?? BackdropColors.Transparent),
             BackdropType.Acrylic => Apply(handle, GetActualBackdropType(type), force, acrylic10Color),
             BackdropType.Tabbed => TryApplyTabbed(handle),
             _ => false

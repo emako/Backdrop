@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace MicaDrop;
+namespace Backdrop;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct Margins

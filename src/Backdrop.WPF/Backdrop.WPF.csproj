@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
+	<LangVersion>preview</LangVersion>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Backdrop.WPF</AssemblyName>
+    <RootNamespace>Backdrop.WPF</RootNamespace>
+	  <NoWarn>CS0649;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Backdrop\Backdrop.csproj" />
+  </ItemGroup>
+
+</Project>
